@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 간단 댓글</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="input" placeholder="댓글을 입력해">
+        <button onclick="writeComment()">등록</button>
+    </div>
+    <div>
+        <ul id="comments">
+        </ul>
+    </div>
+
+    <script>
+        var comments = ['짬뽕', '국밥', '수육'];
+    
+        function writeComment() {
+            const comment = document.getElementById('input').value; 
+            comments.push(comment); 
+            drawList();
+        }
+    
+        function drawList() {
+            const cmtListEl = document.getElementById('comments');
+            cmtListEl.innerHTML = ''; 
+    
+            for (var i = 0; i < comments.length; i++) {
+                var li = document.createElement('li');
+
+                li.innerText = comments[i];
+                li.innerHTML += `<button onclick="modifyComment(${i})">Edit</button>
+                    <button onclick="deleteComment(${i})">Del</button>`;
+            
+                cmtListEl.appendChild(li);
+            }
+        }
+       
+        function modifyComment(idx) {
+            var Text = prompt('수정할 내용:');
+            if (Text) {
+                comments[idx] = Text;
+                drawList();
+            }
+        }
+
+        function deleteComment(idx) {
+            if (!confirm('지워?')) return;
+            comments.splice(idx, 1);
+            drawList();
+        }
+    
+        drawList();
+    </script>
+</body>
+</html>
