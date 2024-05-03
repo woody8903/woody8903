@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뮤직 플레이어</title>
+</head>
+<style>
+    @font-face {
+    font-family: 'CoolGuy-Medium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403@1.0/CoolGuy-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    #playerBox {
+        width: 600px;
+        height: 200px;
+        border: 0px solid gray;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        }
+
+        #bgi {
+            box-shadow: 2px 2px 15px;
+         
+
+        }
+        #bgi img{
+            width : 300px;
+        }
+
+        #info {
+            width : 300px;
+            height : 300px;
+        }
+
+    
+        #title{
+            font-family: 'CoolGuy-Medium';
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        # lrc {
+
+        }
+
+        # player {
+
+        }
+
+
+    </style>
+<body>
+    <div id = "playerBox">
+        <div id = "bgi">
+            <img src="https://cdn.pixabay.com/photo/2015/12/27/05/48/turntable-1109588_1280.jpg" alt="">
+    <div id = "title">가사 없는 음악</div>
+    <div id = "lrc">가사</div>
+    <audio id = "player" src="" controls></audio>
+</div>
+</div>
+
+<button onclick="addtime()">시간 기록</button>
+
+<script>
+    var title = '가사 없는 음악';
+
+    var IrcData = ['(가사가사',
+    '가사가사)',
+    '가사가사',];
+    
+    const IrcTimeData = [
+        13,
+        20,
+        21
+    ]
+
+    document.getElementById('title').innerText = title;
+    const player = document.getElementById('player');
+    const lrc = document.getElementByid('lrc')
+
+    var idx = 0;
+    function addtime() {
+        lrcTimeData.push(player.currentTime);
+        console.log(lrcData[idx++]);
+        }
+
+        player.ontimeupdate = function(time) {
+            var time = player.currentTime;
+            var idx = 0;
+
+            for (var i=0; i<lrcData.length; i++){
+                if (lrcTimeData[i] <= time) {
+                idx = i == 0 ? 0 : i-1;
+                break;
+            }
+        }
+                
+            console.log(idx. lrcdata[idx]);
+            lrc.innerText = lrcData[idx];
+    
+        }
+
+    </script>
+</body>
+</html>
